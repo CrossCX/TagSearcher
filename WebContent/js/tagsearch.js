@@ -82,7 +82,7 @@
 
 				if (value !='') { 
                     $('<span>').addClass('tag').append(
-                        $('<span id="'+ value + '" class="searchTagLabel">').text(name).append('&nbsp;&nbsp;'),
+                        $('<span id="'+ value + '">').text(name).append('&nbsp;&nbsp;'),
                         $('<a>', {
                             href  : '#',
                             title : 'Removing tag',
@@ -103,10 +103,10 @@
 
 					$.fn.tagsSearcher.updateTagsField(this,tagslist);
 
-					if (tags_callbacks[id] && tags_callbacks[id]['onAddTag']) {
-						var f = tags_callbacks[id]['onAddTag'];
-						f.call(this, obj);
-					}
+//					if (options.callback && tags_callbacks[id] && tags_callbacks[id]['onAddTag']) {
+//						var f = tags_callbacks[id]['onAddTag'];
+//						f.call(this, obj);
+//					}
 					if(tags_callbacks[id] && tags_callbacks[id]['onChange'])
 					{
 						var i = tagslist.length;
@@ -177,7 +177,6 @@
     	labelInfo : '已选条件：',
     	inputText : true,		//是否支持手动输入标签，默认不支持
     	enableSearch : false,
-    	selectedTagText : '已选条件',
     	searchBtn : '搜索',
 //      interactive:true,
     	inputLabel:'添加标签',
@@ -221,15 +220,15 @@
 				tags_callbacks[id]['onChange'] = settings.onChange;
 			}
 
-			var markup = '<div id="'+id+'_tagsSearcher" class="tagsSearcher"><span style="float:left;">'+settings.selectedTagText+'</span><div id="'+id+'_addTag">';
+			var markup = '<div id="'+id+'_tagsSearcher" class="tagsSearcher"><div id="'+id+'_addTag">';
 
 			if (settings.inputText) {
 				markup = markup + '<input id="'+id+'_tag" value="" data-default="'+settings.defaultText+'" />';
 			}
 
-//			if(settings.enableSearch){
-//				markup = markup + '<a href="javascript:;" style="float:right;" onclick="onSearch()">搜索</input>';
-//			}
+			if(settings.enableSearch){
+				markup = markup + '<a href="javascript:;" style="float:right;" onclick="onSearch()">搜索</input>';
+			}
 			markup = markup + '</div><div class="tags_clear"></div></div>';
 
 			$(markup).insertAfter(this);
