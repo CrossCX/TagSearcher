@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>标签式搜索</title>
+<title>Insert title here</title>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/tagsearcher.js"></script>
 <link rel="stylesheet" type="text/css" href="css/tagsSearcher.css">
@@ -88,7 +90,7 @@
 	
 	function onSearch(){
 		var tags = "";
-		$("#tags_tagsinput .searchTagLabel").each(function(item) {
+		$("#tags_tagsSearcher .searchTagLabel").each(function(item) {
 			var tagId = $(this).attr("id");
 			if(tagId != undefined && tagId != ""){
 				tags = tags+ tagId + ",";
@@ -98,7 +100,8 @@
 		if(tags != ""){
 			tags = tags.substring(0,tags.length-1);	
 		}
-		alert(tags);
+// 		alert(tags);
 	}
 </script>
+</body>
 </html>
